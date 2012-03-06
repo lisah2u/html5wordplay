@@ -1,0 +1,82 @@
+#pegs {
+width: 100%;
+background: #eee;
+float: left;
+}
+
+#pegs ul {
+list-style: none;
+margin: 0;
+padding: 0;
+width: 12em;
+float: left;
+}
+
+#pegs a, #pegs h2 {
+font: bold 11px/16px arial, helvetica, sans-serif;
+display: block;
+border-width: 1px;
+border-style: solid;
+border-color: #ccc #888 #555 #bbb;
+margin: 0;
+padding: 2px 3px;
+}
+
+#pegs h2 {
+color: #fff;
+background: #000;
+text-transform: uppercase;
+}
+
+#pegs a {
+color: #000;
+background: #efefef;
+text-decoration: none;
+}
+
+#pegs a:hover {
+color: #a00;
+background: #fff;
+}
+
+#pegs li {position: relative;}
+
+#pegs ul ul {
+position: absolute;
+z-index: 500;
+}
+
+#pegs ul ul ul {
+position: absolute;
+top: 0;
+left: 100%;
+}
+
+div#pegs ul ul,
+div#pegs ul li:hover ul ul,
+div#pegs ul ul li:hover ul ul
+{display: none;}
+
+div#pegs ul li:hover ul,
+div#pegs ul ul li:hover ul,
+div#pegs ul ul ul li:hover ul
+{display: block;}
+
+</style>
+<!--[if IE]>
+<style type="text/css" media="screen">
+ #pegs ul li {float: left; width: 100%;}
+</style>
+<![endif]-->
+<!--[if lt IE 7]>
+<style type="text/css" media="screen">
+body {
+behavior: url(csshover.htc);
+font-size: 100%;
+}
+
+#pegs ul li a {height: 1%;} 
+
+#pegs a, #pegs h2 {
+font: bold 0.7em/1.4em arial, helvetica, sans-serif;
+}
