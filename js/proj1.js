@@ -3,7 +3,7 @@ this.nodeType == Node.TEXT_NODE does not work in IE...
 
 This code assumes that <p id=""> follows the following pattern where id =: 1a 1b 2a 2c 3a 3c, etc.
 */
-//highlight = new Addhighlight();
+highlight = new Addhighlight();
 
 function Addhighlight () {
 	console.log("highlight");
