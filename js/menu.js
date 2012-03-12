@@ -15,7 +15,7 @@ $(window).on("load",function () {
 			});
 		$("#dynamic").load('proj1/proj1-v1-fragment.html');  	
 		//$.getScript("js/proj1.js");
-		highlight = new Addhighlight();
+		addHighlight5();
 	});	
 
 	$("#poematic").on("click", function() {
@@ -28,7 +28,7 @@ $(window).on("load",function () {
 					href: "css/proj2.css"
 			});
 		$("#dynamic").load('proj2/proj2-phrase-fragment.html');  	
-		//$.getScript("js/proj2-phrase.js");
+		$.getScript("js/proj2-phrase.js");
 	});	
 
 	/* Un-set and set active list items */	

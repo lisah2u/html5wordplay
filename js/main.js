@@ -1,7 +1,7 @@
 require(["jquery",
-	"bootstrap-tooltip",
-	"bootstrap-popover",
-    "menu", 
+	"order!bootstrap-tooltip",
+	"order!bootstrap-popover",
+    "order!menu", 
 	"proj1"], function($) {
     
     $(function() {  

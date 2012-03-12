@@ -27,6 +27,32 @@ function Addhighlight () {
 	});
 }
 
+function addHighlight5() {
+	var match;
+	console.log("addHighlight5");
+	$('body').find('p[id]').contents().filter(function() {						   
+		return this.nodeType === 3;	
+	})
+	.wrap('<span />');	
+
+	$('body').delegate("p","mouseenter",function(event) {
+		var $p = $(event.target);
+		var line = $p.parent().prop('id');
+
+   		if ($p.is('span')) {
+     			$p.addClass('highlight');
+     			if (match = line.match(/(\d)+a/)) {								   
+	 				$('p[id^='+match[1]+']').find('span').addClass("highlight");	   			  
+	 			}	
+				if (match = line.match(/(\d)+b/)) {
+					$('p[id^='+match[1]+']').find('span').addClass("highlight"); 
+				}
+ 		}      
+	});
+	$('body').delegate("p","mouseleave",function(event) {
+	  	$('span').removeClass("highlight");												   
+	});
+}
 /* Various Alternates */ 
 
 /* Highlights a div with the class attribute poem 

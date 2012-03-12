@@ -1,0 +1,21 @@
+#loading2 {
+  display: none; 
+  position: fixed;
+  left: 50%;
+  top: 40%;
+  width: 90px;
+  padding: 20px;
+  margin-left: -66px;
+  border: 1px #000 solid;
+  background-color: #eee;
+}
+
+#loading {
+  /* display: none; */
+  position: fixed;
+  left: 50%;
+  top: 40%;
+  width: 90px;
+  padding: 20px;
+  margin-left: -66px;
+}
