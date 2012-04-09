@@ -1,0 +1,49 @@
+To deploy to heroku:
+
+1) create package.json
+{
+  "name": "node-example",
+  "version": "0.0.1",
+  "dependencies": {
+    "express": "2.2.0"
+  }
+}
+
+2)install dependencies locally via: npm install 
+
+3) create .gitignore
+node_modules
+
+4) Create Procfile
+web: node index.js
+
+5) foreman start (supposed to come up on port 5000)
+
+6) Deploy to heroku
+$ git init
+$ git add .
+$ git commit -m "init"
+$ heroku create --stack cedar
+
+http://growing-stream-5475.herokuapp.com/ | git@heroku.com:growing-stream-5475.git
+
+$ git push heroku master
+$ heroku ps:scale web=1
+
+
+Notes:
+
+To commit new changes:
+git commit -am "Updated port to process.env.PORT"
+git push heroku
+
+Useful commands:
+heroku ps
+heroku logs
+
+Trouble-shooting with a new branch:
+git branch production
+git checkout production
+#do some code changes
+git commit -am "some desparate code changes to try fix heroku"
+git push heroku production:master

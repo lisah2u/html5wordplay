@@ -1,14 +1,13 @@
 //$(document).ready(function () {
 
 	$('<div id="loading2">Loading…</div>')
-	.insertBefore('#loading');	
+	.insertBefore('#loading')
+	.ajaxStart(function() {
+		$(this).show();
+	}).ajaxStop(function() {
+		$(this).hide();
+	});	
 	
-	$.ajaxStart(function() {
-		$('#loading2').show();
-	});
-	$.ajaxComplete(function() {
-		$('#loading2').hide();
-	});
 /*
 	$("#loading2").on("ajaxStart", function(){
 	   $(this).show();
@@ -16,10 +15,11 @@
 	   $(this).hide();
 	});
 */
-	$("#loading").append('<p><img src="../images/ajax-loader.gif"></p>');
+//	$("#loading").append('<p><img src="../images/ajax-loader.gif"></p>');
 
 //Version2
 
+/*
 	  $.ajax({
 	  url: "http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?",
 	  dataType: 'JSONP',
@@ -38,6 +38,7 @@
 	  		  },
 	  complete: function() { $('#loading').hide();	}	  
 	  });
+*/
 	  //return false;
 
 //});	

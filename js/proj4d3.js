@@ -1,4 +1,7 @@
-var min = 15; //min frequency
+var min = 25; //min frequency
+var combinedData = new Array(); 
+var donneData;
+var shakeData;
 
 $(document).ready(function () {
 
@@ -11,8 +14,8 @@ var r = 800,
 //color      
 var fill = d3.scale.ordinal()
     .domain(["shake", "donne", "both"])
-    //.range(colorbrewer.RdBu[9]);
-    .range(["#d84b2a", "#beccae", "#7aa25c"])      
+    .range(colorbrewer.RdBu[9]);
+    //.range(["#d84b2a", "#beccae", "#7aa25c"])      
 
 //pack layout 
 var bubble = d3.layout.pack()
@@ -27,6 +30,7 @@ var vis = d3.select("#chart").append("svg")
      
 d3.json("donneTf.json", function(json) {
 	 	var author = "donne";
+	 	//donneData = combine(json);
 		donneData = highFreq(json,author);
 		createNodes(donneData);  
     
@@ -34,18 +38,18 @@ d3.json("donneTf.json", function(json) {
 
 d3.json("shakeTf.json", function(json) {
 	 	var author = "shakespeare";
+	 	//shakeData = combine(json);
 		shakeData = highFreq(json,author);
 		createNodes(shakeData);  
     
 	});    
-
+  
 
 function createNodes(data) {
 
 		for (var key in data) {
 		   var obj = data[key];
-		   for (var prop in obj) {
-			    var rad = 10;                  //TODO scale radius
+			    var rad = 10;                  
 				var x = Math.random() * r;
 			    var y = Math.random() * r;
 				//console.log(obj['word'],obj['freq'],obj['author']);
@@ -56,21 +60,19 @@ function createNodes(data) {
 				.enter()
 				.append("g")
 			   .attr("class", "node")
-		       .attr("transform", function(n) { return "translate(" + x + "," + y + ")"; });
-				node.append('title').text(function(n) { 
-	       			return obj['word'] + ": " + format(n.value); });
+		       .attr("transform", function(d) { return "translate(" + x + "," + y + ")"; });
+				node.append('title').text(function(d) { 
+	       			return obj['author'] + ": " + format(obj['freq']); });
 	       		node.append("circle")
-	       			.attr("r", function(n) { return rad; })
-	       			.style("fill", function(n) { 
-		       				return fill(n.author); });	       				
+	       			.attr("r", function(d) { radius = scaleBubbles(obj['freq']); return radius;  })
+	       			.style("fill", function(d) { 
+		       				return fill(d.author); });	       				
 		       	node.append("text")
 			       .attr("text-anchor", "middle")
 			       .attr("dy", ".3em")
-			       .text(function(n) { return obj['word']; }); 
-	   		}
+			       .text(function(d) { return obj['word']; }); 
 		}  
 }      
-
 
 function highFreq(json,author) {
 		var i = 0;	
@@ -81,7 +83,6 @@ function highFreq(json,author) {
 			        word: key,
 			        freq: json[key],
 			        author: author }
-				//objWord = checkDuplicate();
 					if (json[key] >= min) {
 				    	arr.push(objWord);
 					}	
@@ -89,12 +90,10 @@ function highFreq(json,author) {
 		return arr; 	    		    
 }
 
-//TODO 
-function checkDuplicate(obj) {
-	return obj;
+function scaleBubbles(freq) {
+	return freq/2;
 }
 
-//TODO - adjust for scaling
 function adjustedFreq(freq)
 	{
 		this.author="both";
