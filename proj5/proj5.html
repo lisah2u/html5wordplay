@@ -59,12 +59,10 @@
             <ul class="nav nav-list">
               <li class="nav-header">Interactive Text</li>
               <li><a href="http://html5wordplay.com/proj1/proj1-v1.html">V1 - Styling with selectors</a></li>
-              <li>V2 - Parallel scrolling</li>
             </ul>
             <ul class="nav nav-list">
               <li class="nav-header">Text Transformation</li>
               <li><a href="http://html5wordplay.com/proj2/proj2-phrase.html">Poem-atic</a></li>
-              <li>Manglify</li>
             </ul>
             <ul class="nav nav-list">
               <li class="nav-header">Games</li>
@@ -72,10 +70,12 @@
             </ul>
             <ul class="nav nav-list">
               <li class="nav-header">Visualization</li>
-              <li><a href="./proj4_files/proj4.html">D3 Experimentation</a></li>
+              <li><a href="http://html5wordplay.com/proj4/proj4.html">D3 Experimentation</a></li>
+			</ul>
             <ul class="nav nav-list">
-              <li class="nav-header">Node.js</li>
-              <li class="active"><a href="./proj4_files/proj5.html">Porter Stemmer</a></li>
+              <li class="nav-header">Web Service</li>
+              <li class="active"><a href="http://html5wordplay.com/proj5/proj5.html">Porter Stemmer</a></li>
+              <li><a href="http://html5wordplay.com/proj-1.html">Dictionary Look-up</a></li>
             </ul>
           </div><!--/.well -->
         </div><!--/span-->
@@ -84,30 +84,39 @@
 <!--  FRAGMENT START HERE -->
         
           <div class="hero-unit" id="content">
-            <p>This Porter stemmer is part of a node.js web service (see <a href="https://github.com/lisah2u/html5wordplay/tree/dev/proj5">here</a>). It uses the Node <a href="https://github.com/NaturalNode/natural">Natural</a> module.
+            <p>This Porter stemmer is part of a node.js web service (see <a href="https://github.com/lisah2u/html5wordplay/tree/dev/proj5">here</a> and <a href="http://html5wordplay.com/proj5/node">here</a>). It uses the Node <a href="https://github.com/NaturalNode/natural">Natural</a> module.
             </p>
           </div><!--/content-->
 		     <div class="row-fluid">
-		        <div class="span12">		        
-		        <form id ="form" name="form">
-			        <fieldset>
-			          <div class="control-group">
-			            <label for="textarea" class="control-label">Enter text here:</label>
-			            <div class="controls">
-			              <textarea rows="3" id="textarea" name="stemWords" class="input-xlarge"></textarea>
-			            </div>
-			          </div>
-			          <div class="form-actions">
-			            <button class="btn btn-primary" type="submit" id="stemWords">Stem</button>
-			          </div>
-			        </fieldset>
-      			</form>
-      			<div id="results"></div>
-      			<p>Asynchronous requests are awesome. Here's another call from the same web service.</p>
-      			<div id="btn"><a href="#" class="btn btn-primary" id="getTime">Current Time</a></div>
-		        <div id="time">No time like the present</div></div>
-		        </div>  
-		     </div>     
+		        <div class="span12">
+					<div class="row-fluid">
+				        <div class="span6">
+		        			<form id ="form" name="form">
+			        			<fieldset>
+			          				<div class="control-group">
+			            				<label for="textarea" class="control-label">Enter text here:</label>
+			            				<div class="controls">
+			              					<textarea rows="3" id="textarea" name="stemWords" class="input-xlarge"></textarea>
+			            				</div>
+			          				</div>
+			          				<div class="form-actions">
+			            				<button class="btn btn-primary" type="submit" id="stemWords">Stem</button>
+			          				</div>
+			        			</fieldset>
+      						</form>
+						</div>
+						<div class="span6">	
+							<p>Porter Stemmer Results:</p>	
+      						<div id="results">
+      						</div>
+						</div>
+					</div>	
+				</div>
+				<div class="span12">
+      				<p>Asynchronous requests are awesome. Here's another call from the same node server. This client requests an update every five seconds.</p>
+		        	<div id="time">No time like the present</div></div>
+		        	</div>  
+		     	</div>     
 <!--  FRAGMENT STOP HERE -->
 
     </div><!--/span9-->
