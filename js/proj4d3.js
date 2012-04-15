@@ -1,4 +1,4 @@
-var min = 25; //min frequency
+var min = 15; //min frequency
 var combinedData = new Array(); 
 var donneData;
 var shakeData;
