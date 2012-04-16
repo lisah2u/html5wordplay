@@ -3,7 +3,8 @@ this.nodeType == Node.TEXT_NODE does not work in IE...
 
 This code assumes that <p id=""> follows the following pattern where id =: 1a 1b 2a 2c 3a 3c, etc.
 */
-highlight = new Addhighlight();
+//highlight = new Addhighlight();
+addHighlight5();
 
 function Addhighlight () {
 	console.log("highlight");
@@ -27,9 +28,9 @@ function Addhighlight () {
 	});
 }
 
-/*  
-This works with the upcoming site design requiring event delegation.
+/* this.nodeType == Node.TEXT_NODE does not work in IE... 
 
+This code assumes that <p id=""> follows the following pattern where id =: 1a 1b 2a 2c 3a 3c, etc.
 */
 
 function addHighlight5() {

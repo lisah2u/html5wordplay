@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<!-- saved from url=(0055)http://twitter.github.com/bootstrap/examples/fluid.html -->
+<!-- saved from url=(0041)http://html5wordplay.com/proj4/proj4.html -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
-    <title>Poem-atic</title>
-    <meta name="description" content="Poem-atic">
+    <title>HTML5 Word Play</title>
+    <meta name="description" content="Node.js server">
     <meta name="author" content="Lisa Harper">
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
@@ -21,17 +21,16 @@
       .sidebar-nav {
         padding: 9px 0;
       }
-      .highlight {background-color:#FFFFD7;} 
     </style>
     <link href="../css/bootstrap-responsive.min.css" rel="stylesheet">
-    <link href="../css/proj2.css" rel="stylesheet">
-    
+    <link href="../css/proj4.css" rel="stylesheet">
+    <link href="../css/colorbrewer.css" rel="stylesheet">
+
     <!-- Le fav and touch icons -->
     <link rel="shortcut icon" href="http://twitter.github.com/bootstrap/examples/images/favicon.ico">
     <link rel="apple-touch-icon" href="http://twitter.github.com/bootstrap/examples/images/apple-touch-icon.png">
     <link rel="apple-touch-icon" sizes="72x72" href="http://twitter.github.com/bootstrap/examples/images/apple-touch-icon-72x72.png">
     <link rel="apple-touch-icon" sizes="114x114" href="http://twitter.github.com/bootstrap/examples/images/apple-touch-icon-114x114.png">
-
   </head>
 
  <body>
@@ -44,7 +43,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="http://html5wordplay.com">HTML5 Word Play</a>
+          <a class="brand" href="http://html5wordplay.com/index.html">HTML5 Word Play</a>
           <div class="nav-collapse">
             <ul class="nav">
             </ul>
@@ -63,7 +62,7 @@
             </ul>
             <ul class="nav nav-list">
               <li class="nav-header">Text Transformation</li>
-              <li class="active"><a href="http://html5wordplay.com/proj2/proj2-phrase.html">Poem-atic</a></li>
+              <li><a href="http://html5wordplay.com/proj2/proj2-phrase.html">Poem-atic</a></li>
             </ul>
             <ul class="nav nav-list">
               <li class="nav-header">Games</li>
@@ -75,39 +74,53 @@
 			</ul>
             <ul class="nav nav-list">
               <li class="nav-header">Web Service</li>
-              <li><a href="http://html5wordplay.com/proj5/proj5.html">Porter Stemmer</a></li>
+              <li class="active"><a href="http://html5wordplay.com/proj5/proj5.html">Porter Stemmer</a></li>
               <li><a href="http://html5wordplay.com/proj5-1.html">Dictionary Look-up</a></li>
             </ul>
           </div><!--/.well -->
         </div><!--/span-->
         <div class="span9">
-
+        
+<!--  FRAGMENT START HERE -->
+        
           <div class="hero-unit" id="content">
-            <p>Both <a href="http://en.wikipedia.org/wiki/William_Shakespeare">Will Shakespeare</a> and <a href="http://en.wikipedia.org/wiki/John_Donne">John Donne</a> were brilliant 16th century poets who wrote lovely sonnets in iambic pentameter. Such work is perfect for poetry generation! See JavaScript <a href="../js/proj2-phrase.js">here</a>.</p>
-            </div>
-                        
-      <div class="row-fluid">
-        <div class="span12">
-        <div id="poem">
-          <div id="title"><h1>Title</h1></div>
-<!--          <div id="author"><h2><a href="#">John Donne or Will Shakespeare?</a></h2></div> -->
-          <div id="author" style="text-align: center; margin: 0px auto 0px auto;"><h2><a href="#" class="btn btn-primary" id="guess">Author</a></h2></div>
-          <div class="quatrain">
-        <div class="line" id="line1">
-        </div>
-        <div class="line" id="line2">
-        </div>
-        <div class="line" id="line3">
-        </div>
-        <div class="line" id="line4">
-        </div>
-      </div>
-    </div><!-- poem -->        
-      </div><!--/span-12-->
-      </div><!--/row-fluid-->
-      
-      </div><!--/span9-->
-      </div><!--/row-fluid-->
+            <p>This Porter stemmer is part of a node.js web service (see <a href="https://github.com/lisah2u/html5wordplay/tree/dev/proj5">here</a> and <a href="http://html5wordplay.com/proj5/node">here</a>). It uses the Node <a href="https://github.com/NaturalNode/natural">Natural</a> module.
+            </p>
+          </div><!--/content-->
+		     <div class="row-fluid">
+		        <div class="span12">
+					<div class="row-fluid">
+				        <div class="span6">
+		        			<form id ="form" name="form">
+			        			<fieldset>
+			          				<div class="control-group">
+			            				<label for="textarea" class="control-label">Enter text here:</label>
+			            				<div class="controls">
+			              					<textarea rows="3" id="textarea" name="stemWords" class="input-xlarge"></textarea>
+			            				</div>
+			          				</div>
+			          				<div class="form-actions">
+			            				<button class="btn btn-primary" type="submit" id="stemWords">Stem</button>
+			          				</div>
+			        			</fieldset>
+      						</form>
+						</div>
+						<div class="span6">	
+							<p>Porter Stemmer Results:</p>	
+      						<div id="results">
+      						</div>
+						</div>
+					</div>	
+				</div>
+				<div class="span12">
+      				<p>Asynchronous requests are awesome. Here's another call from the same node server. This client requests an update every five seconds.</p>
+		        	<div id="time">No time like the present</div></div>
+		        	</div>  
+		     	</div>     
+<!--  FRAGMENT STOP HERE -->
+
+    </div><!--/span9-->
+      </div><!--/row-->
 
       <hr>
 
@@ -119,11 +132,23 @@
     
     <!-- Le javascript
     ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-   <script src="../js/jquery.js"></script>
-    <script src="../js/bootstrap-tooltip.js"></script>
-    <script src="../js/bootstrap-popover.js"></script>
-    <script src="../js/bootstrap-button.js"></script>
-    <script src="../js/proj2-phrase.js"></script>
-    
+    <!-- Placed at the end of the document so the pages load faster   -->
+    <script src="../js/jquery.js"></script>
+    <!-- <script src="js/bootstrap-transition.js"></script>
+    <script src="js/bootstrap-alert.js"></script>
+    <script src="js/bootstrap-modal.js"></script>
+    <script src="js/bootstrap-dropdown.js"></script>
+    <script src="js/bootstrap-scrollspy.js"></script>
+    <script src="js/bootstrap-tab.js"></script>
+    <script src="js/bootstrap-tooltip.js"></script>
+    <script src="js/bootstrap-popover.js"></script>
+    <script src="js/bootstrap-button.js"></script>
+    <script src="js/bootstrap-collapse.js"></script>
+    <script src="js/bootstrap-carousel.js"></script>
+    <script src="js/bootstrap-typeahead.js"></script> -->
+  
+    <script src="../js/proj5.js"></script> 
+
+  
+
 </body></html>
