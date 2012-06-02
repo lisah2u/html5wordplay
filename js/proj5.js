@@ -35,7 +35,7 @@ $('#stemWords').on("click", function () {
 	$('#results').text("");
 	var data = JSON.stringify($("#textarea").val());
 //	url = "http://localhost:3000/stem";
-	url = 'http://growing-stream-5475.herokuapp.com/stemWords';
+	url = 'http://growing-stream-5475.herokuapp.com/stem';
 	callback = "porterStemmer";
 	type = "json";
 	console.log(data);
