@@ -1,0 +1,53 @@
+.highlight {
+	background-color: #ccc;
+	font-style: normal;
+	margin: 0.5em 0;
+	padding: 0.5em;
+}
+
+.hidden {
+	display: none;
+}
+/*
+img {
+	display: none;
+}
+
+.chars {
+	display: none;
+
+}
+
+.flickr {
+	display: none;
+}
+*/
+.viewer {
+	position: relative;
+}
+.icon-volume-up {
+}
+.hover {
+	cursor: pointer;
+	padding: 0.5em;
+	margin: 0.5em 0;
+}
+
+
+#history {
+  float: left;
+  width: 78%;
+}
+
+.entry {
+  padding: 1em 0em;
+}
+.entry .term {
+  display: inline;
+  font-weight: bold;
+}
+
+.entry .definition {
+  padding: .5em;
+  font-style: italic;
+}

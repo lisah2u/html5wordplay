@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<!-- saved from url=(0055)http://twitter.github.com/bootstrap/examples/fluid.html -->
+<!-- saved from url=(0041)http://html5wordplay.com/proj4/proj4.html -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
     <title>HTML5 Word Play</title>
-    <meta name="description" content="Lisa's experiments with text vizualization in HTML5">
+    <meta name="description" content="Dictionary Look-up">
     <meta name="author" content="Lisa Harper">
+	<!-- <META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+	<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-STORE"> -->
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
     <!--[if lt IE 9]>
@@ -12,7 +14,10 @@
     <![endif]-->
 
     <!-- Le styles -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/proj6.css" rel="stylesheet">
+    <link href="../css/bootstrap-responsive.min.css" rel="stylesheet">
+	<link href="../css/font-awesome.css" rel="stylesheet" >
     <style type="text/css">
       body {
         padding-top: 60px;
@@ -22,8 +27,7 @@
         padding: 9px 0;
       }
     </style>
-    <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
-
+	
     <!-- Le fav and touch icons -->
     <link rel="shortcut icon" href="http://twitter.github.com/bootstrap/examples/images/favicon.ico">
     <link rel="apple-touch-icon" href="http://twitter.github.com/bootstrap/examples/images/apple-touch-icon.png">
@@ -41,7 +45,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="index.html">HTML5 Word Play</a>
+          <a class="brand" href="http://html5wordplay.com/proj5/index.html">HTML5 Word Play</a>
           <div class="nav-collapse">
             <ul class="nav">
             </ul>
@@ -56,27 +60,27 @@
           <div class="well sidebar-nav">
             <ul class="nav nav-list">
               <li class="nav-header">Interactive Text</li>
-              <li><a href="proj1/proj1-v1.html">V1 - Styling with selectors</a></li>
+              <li><a href="../proj1/proj1-v1.html">V1 - Styling with selectors</a></li>
             </ul>
             <ul class="nav nav-list">
               <li class="nav-header">Text Transformation</li>
-              <li><a href="proj2/proj2-phrase.html">Poem-atic</a></li>
+              <li><a href="../proj2/proj2-phrase.html">Poem-atic</a></li>
             </ul>
             <ul class="nav nav-list">
               <li class="nav-header">Games</li>
-              <li><a href="proj3/proj3.html">Chinese Mastermind</a></li>
+              <li><a href="../proj3/proj3.html">Chinese Mastermind</a></li>
             </ul>
             <ul class="nav nav-list">
               <li class="nav-header">Visualization</li>
-              <li><a href="proj4/proj4.html">D3 Experimentation</a></li>
+              <li><a href="../proj4/proj4.html">D3 Experimentation</a></li>
             </ul>
             <ul class="nav nav-list">
               <li class="nav-header">Node.js</li>
-              <li><a href="proj5/proj5.html">Porter Stemmer</a></li>
+              <li><a href="../proj5/proj5.html">Porter Stemmer</a></li>
             </ul>
             <ul class="nav nav-list">
               <li class="nav-header">Web Services</li>
-              <li><a href="proj6/proj6.html">Dictionary Look-Up</a></li>
+              <li><a href="proj6.html">Dictionary Look-Up</a></li>
             </ul>
           </div><!--/.well -->
         </div><!--/span-->
@@ -85,12 +89,42 @@
 <!--  FRAGMENT START HERE -->
         
           <div class="hero-unit" id="content">
-            <p>HTML5 offers many new possibilities for text visualization. This site is my playground for experimentation. Yes, this is a plain vanilla Twitter Bootstrap page. Some day it will be unique-ified.</p>
+            <p>Type in a short phrase in English and learn the Chinese equivalent. This demonstration uses the <a href="http://msdn.microsoft.com/en-us/library/dd576287.aspx">Microsoft Bing Translator API</a> and <a href="http://www.wordreference.com/docs/api.aspx">© WordReference.com API</a>. See <a href="https://github.com/lisah2u/html5wordplay/blob/release/js/proj6.js">JavaScript</a> here.
+            </p>
           </div><!--/content-->
+		     <div class="row-fluid">
+		        <div class="span12">
+					<div class="row-fluid">
+				        <div class="span6">
+		        			<form class="well">
+							        <label>Type an English word.</label>
+							        <input type="text" id="userInput" class="span6" placeholder="dog"> 
+							        <button type="submit" class="btn" id="translate">Translate</button>
+							      </form>
+							<div id="history" class="span6">
+								<table class="table table-condensed">
+									<thead><tr><th>History</th></tr></thead> 
+										<tbody class="history">
+										</tbody>
+								</table>
+							</div>		  
+						</div>
+						<div class="span6">	
+							<div id="chinese"><p class="popup-marker"></p></div>
+							<div id="dict" title="reverse dictionary lookup"><p></p></div>
+							<div class="viewer">
+								<div id="animChars"></div>
+								<div id="chars"></div>
+								<div id="flickr"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+		     </div> 
 
 <!--  FRAGMENT STOP HERE -->
 
-    </div><!--/span9-->
+		</div><!--/span9-->
       </div><!--/row-->
 
       <hr>
@@ -103,21 +137,11 @@
     
     <!-- Le javascript
     ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster   -->
-    <script src="js/jquery.min.js"></script>
-    <!-- <script src="js/bootstrap-transition.js"></script>
-    <script src="js/bootstrap-alert.js"></script>
-    <script src="js/bootstrap-modal.js"></script>
-    <script src="js/bootstrap-dropdown.js"></script>
-    <script src="js/bootstrap-scrollspy.js"></script>
-    <script src="js/bootstrap-tab.js"></script>
-    <script src="js/bootstrap-tooltip.js"></script>
-    <script src="js/bootstrap-popover.js"></script>
-    <script src="js/bootstrap-button.js"></script>
-    <script src="js/bootstrap-collapse.js"></script>
-    <script src="js/bootstrap-carousel.js"></script>
-    <script src="js/bootstrap-typeahead.js"></script> -->
-
-  
-
+    <script src="../js/jquery-1.7.2.min.js"></script>
+    <script src="../js/bootstrap-tooltip.js"></script>
+    <script src="../js/bootstrap-popover.js"></script>
+	<script src="../js/spin.min.js"></script>
+	<script src="../js/modernizr.custom.2.5.3.js"></script>
+    <script src="../js/proj6.js"></script>  
+	<script type="text/javascript" src="http://d3eyf2cx8mbems.cloudfront.net/js/loggly-0.1.0.js"></script>
 </body></html>
