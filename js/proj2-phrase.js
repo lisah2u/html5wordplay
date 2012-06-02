@@ -16,8 +16,8 @@ function poem_init() {
 	, shakePhrases = [];
  
 	$.when(
-		$.getJSON('proj2/test-donne.json'),								  
-		$.getJSON('proj2/test-shake.json'))								  
+		$.getJSON('test-donne.json'),								  
+		$.getJSON('test-shake.json'))								  
 		.then( function (donne, shake) {
 			$.each( donne[0], function (index, value) {
 				donnePhrases.push(value);
@@ -100,7 +100,7 @@ function generateAuthor(donnePhrases,shakePhrases) {
 
 	$('#guess').on("click", function () {
 				$('#author').popover('disable'),
-				$('#guess').replaceWith(authors[randAuthor]+'<br><a href="#" class="btn btn-primary" id="guess">Try Again!</a>')
+				$('#guess').replaceWith(authors[randAuthor])
 			generateTitle(),
 			author = authors[Math.floor(Math.random() * authors.length)],
 			makeQuatrain(author,donnePhrases,shakePhrases)

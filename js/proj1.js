@@ -4,6 +4,7 @@ this.nodeType == Node.TEXT_NODE does not work in IE...
 This code assumes that <p id=""> follows the following pattern where id =: 1a 1b 2a 2c 3a 3c, etc.
 */
 //highlight = new Addhighlight();
+addHighlight5();
 
 function Addhighlight () {
 	console.log("highlight");
@@ -27,10 +28,14 @@ function Addhighlight () {
 	});
 }
 
+/* this.nodeType == Node.TEXT_NODE does not work in IE... 
+
+This code assumes that <p id=""> follows the following pattern where id =: 1a 1b 2a 2c 3a 3c, etc.
+*/
+
 function addHighlight5() {
 	var match;
-	console.log("addHighlight5");
-	$('body').find('p[id]').contents().filter(function() {						   
+	$('p[id]').contents().filter(function() {						   
 		return this.nodeType === 3;	
 	})
 	.wrap('<span />');	
@@ -53,6 +58,7 @@ function addHighlight5() {
 	  	$('span').removeClass("highlight");												   
 	});
 }
+
 /* Various Alternates */ 
 
 /* Highlights a div with the class attribute poem 
